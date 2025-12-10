@@ -6,8 +6,16 @@ body {
 }
 
 .dm-sans {
-  font-family: "DM Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.bg-ambience-blue {
+    background-color: #00a0f3;
+}
+
+
+.bg-ambience-light {
+  background-color: #fafbf4;
 }
