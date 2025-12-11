@@ -35,3 +35,13 @@ body, html {
     font-weight: 400;
     font-style: normal;
 }
+
+.welcome {
+    padding-left: 10%;
+    margin-top: 4%;
+}
+
+/* .text {
+    padding: 10%;
+    right: 30%;
+} */
