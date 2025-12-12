@@ -41,7 +41,19 @@ body, html {
     margin-top: 4%;
 }
 
-/* .text {
-    padding: 10%;
-    right: 30%;
-} */
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 15%;
+}
+
+.input {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#blabla {
+    margin-bottom: 1%;
+}
