@@ -9,24 +9,29 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    background: linear-gradient(#1B61E4,#1BC6E4);
 }
 
-.color {
-    position: fixed;     
-    top: 0;
-    left: 0;
+/* .color {
+    background-color: #7EC8E3;
     width: 100%;
-    height: 100vh;
-    z-index: -1;        
+    height: 40%;
+} */
+
+.welcome {
+    padding: 50px;
+    padding-left: 50px;
+    height: 150px;
+
 }
 
-.litte {
-    height: 20vh;
-    background-color: #00a0f3;
+
+.pic {
+    width: 85px;
 }
-.top {
-    height: 80vh;
-    background-color: #fafbf4;
+
+.wel {
+    font-size: 40px;
 }
 
 .dm-sans {
@@ -36,24 +41,50 @@ body, html {
     font-style: normal;
 }
 
-.welcome {
-    padding-left: 10%;
-    margin-top: 4%;
-}
 
 .text {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 15%;
+    margin-left: 15%;
+    background-color: #E807F8;
+    width: 600px;
+    border: 3px solid #2AB1D5;
+    border-radius: 20px;
+
 }
 
 .input {
+    margin-top: -25%;
+    margin-left: 50%;
+    color: azure;
     align-items: center;
     display: flex;
     flex-direction: column;
+    
 }
 
-#blabla {
+.button {
+    width: 130px;
+    height: 45px;
+    border: 2px solid #0000FF;
+    padding: 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #00A0F3;
+    font-size: 20px;
+    transition: all ease-in-out 0.5s;
+}
+
+.button:hover {
+    
+    transform: scale(1.3);
+}
+
+#seenum {
+    border: 2px solid #00A0F3;
     margin-bottom: 1%;
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
 }
