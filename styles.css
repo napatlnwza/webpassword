@@ -1,98 +1,105 @@
 body {
     font-family: "Noto Sans Thai", sans-serif;
-    font-weight: 400;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-body, html {
     margin: 0;
-    padding: 0;
-    height: 100%;
-    background: linear-gradient(#1B61E4,#1BC6E4);
+    min-height: 100vh;
+    background: linear-gradient(#1B61E4, #1BC6E4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    gap: 2rem;
+    width: 90%;
+    max-width: 1000px;
 }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-}
-
+/* กล่องเนื้อหา */
 .content {
-    box-shadow: black 100px;
+    flex: 2;
+    background-color: #E807F8;
+    border: 3px solid #2AB1D5;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
+/* Welcome */
 .welcome {
-    padding: 50px;
-    padding-left: 50px;
-    height: 150px;
-
-}
-
-
-.pic {
-    width: 85px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .wel {
-    font-size: 40px;
+    font-size: 2.5rem;
 }
 
-.dm-sans {
-    font-family: "DM Sans", sans-serif;
-    font-optical-sizing: auto;
+.pic {
+    width: 85px;
+    border-radius: 100px;
+}
+
+/* ข้อความ */
+.text h2 {
+    font-size: 1.1rem;
     font-weight: 400;
-    font-style: normal;
+    line-height: 1.6;
 }
 
-
-.text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 15%;
-    background-color: #E807F8;
-    width: 600px;
-    border: 3px solid #2AB1D5;
-    border-radius: 20px;
+.text h5 {
+    margin-top: 1rem;
+    opacity: 0.8;
 }
 
+/* ฟอร์ม */
 .input {
-    margin-top: -25%;
-    margin-left: 50%;
-    color: azure;
-    align-items: center;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
+    color: white;
+    gap: 1rem;
 }
 
+/* select */
+#seenum {
+    width: 100%;
+    max-width: 220px;
+    height: 50px;
+    border-radius: 15px;
+    border: 2px solid #00A0F3;
+}
+
+/* ปุ่ม */
 .button {
     width: 130px;
     height: 45px;
-    border: 2px solid #0000FF;
-    padding: 1px;
     border-radius: 10px;
-    cursor: pointer;
+    border: 2px solid #0000FF;
     background-color: #00A0F3;
     font-size: 20px;
-    transition: all ease-in-out 0.5s;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .button:hover {
-    
-    transform: scale(1.3);
+    transform: scale(1.1);
 }
 
-#seenum {
-    border: 2px solid #00A0F3;
-    margin-bottom: 1%;
-    width: 200px;
-    height: 50px;
-    border-radius: 15px;
+/* 📱 มือถือ */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .wel {
+        font-size: 2rem;
+    }
+
+    .text h2 {
+        font-size: 1rem;
+    }
 }
