@@ -12,6 +12,17 @@ body, html {
     background: linear-gradient(#1B61E4,#1BC6E4);
 }
 
+.container {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
 .content {
     box-shadow: black 100px;
 }
