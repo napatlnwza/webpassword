@@ -5,4 +5,4 @@ for (let i=1;i<=30;i++) {
     option.textContent=i
     num.appendChild(option)
 }
-console.log(29689)
+console.log(29689);
