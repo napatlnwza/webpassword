@@ -42,10 +42,25 @@ form.addEventListener("submit", async function (e) {
         showCancelButton: true
     });
 
-    if (text==correctPass) {
-        Swal.fire("✅ Correct!", "โปรดแคปภาพหน้าจอหน้านี้ เพื่อเป็นหลักฐาน", "success");
-    }
-    else if (text != correctPass) {
-        Swal.fire("❌ Wrong password", "กรุณาลองใหม่", "error");
-    }
+    if (text === undefined) return;
+
+    Swal.fire({
+        title: "Loading",
+        text: "กำลังโหลด กรุณารอสักครู่",
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+    setTimeout(() => {
+        Swal.close();
+
+        if (text == correctPass) {
+            Swal.fire("✅ Correct!","โปรดแคปภาพหน้าจอหน้านี้ เพื่อเป็นหลักฐาน","success");
+        } else {
+            Swal.fire("❌ Wrong password","กรุณาลองใหม่","error");
+        }
+    }, 1700);
+
 });
