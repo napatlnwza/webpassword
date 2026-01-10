@@ -1,3 +1,28 @@
+  // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBXgv9x9NFT67QXgssNLB41aDQACMusZwE",
+  authDomain: "unlock-key-smte.firebaseapp.com",
+  projectId: "unlock-key-smte",
+  storageBucket: "unlock-key-smte.firebasestorage.app",
+  messagingSenderId: "725579747736",
+  appId: "1:725579747736:web:9f24fc28dca1157eea1bed",
+  measurementId: "G-BLF7BEQZWY"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+
+
 let num=document.getElementById("seenum")
 for (let i=1;i<=30;i++) {
     const option=document.createElement("option")
@@ -7,17 +32,6 @@ for (let i=1;i<=30;i++) {
 }
 console.log(29689);
 let bt=document.getElementById("btsubmit");
-const checkpass={1:1234,2:4567,3:1241
-                ,4:2121,5:1234,6:2435
-                ,7:1111,8:2222,9:3333
-                ,10:1111,11:2222,12:3333
-                ,13:1111,14:2222,15:3333
-                ,16:1111,17:3333,18:2222
-                ,19:1111,20:2222,21:3333
-                ,22:1111,23:2222,24:3333
-                ,25:1111,26:2222,27:3333
-                ,28:1111,29:2222,30:3333
-}
 
 
 const form = document.querySelector("form");
@@ -27,7 +41,6 @@ form.addEventListener("submit", async function (e) {
     e.preventDefault(); // กันหน้ารีเฟรช
 
     const selectedNum = num.value;             
-    const correctPass = checkpass[selectedNum];
 
     const { value: text } = await Swal.fire({
         title: "กรุณากรอกรหัส",
@@ -44,6 +57,11 @@ form.addEventListener("submit", async function (e) {
 
     if (text === undefined) return;
 
+    if (!selectedNum) {
+        Swal.fire("แจ้งเตือน", "กรุณาเลือกเลขที่ก่อน", "warning");
+        return;
+    }
+
     Swal.fire({
         title: "Loading",
         text: "กำลังโหลด กรุณารอสักครู่",
@@ -53,14 +71,38 @@ form.addEventListener("submit", async function (e) {
         }
     });
 
-    setTimeout(() => {
-        Swal.close();
+    setTimeout(async () => {
+    Swal.close();
 
-        if (text == correctPass) {
-            Swal.fire("✅ Correct!","โปรดแคปภาพหน้าจอหน้านี้ เพื่อเป็นหลักฐาน","success");
-        } else {
-            Swal.fire("❌ Wrong password","กรุณาลองใหม่","error");
-        }
+    const ref = doc(db, "passwords", selectedNum);
+    const snap = await getDoc(ref);
+
+    if (snap.exists() && text === snap.data().pass) {
+        Swal.fire({
+            icon: "success",
+            title: "✅ Correct!",
+            html: `
+              <p>รหัสที่คุณกรอกคือ</p>
+              <b style="font-size:18px;color:green;">${text}</b>
+              <p>โปรดแคปภาพหน้าจอหน้านี้ เพื่อเป็นหลักฐาน</p>`
+        });
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "❌ Wrong password",
+            html: `
+              <p>รหัสที่คุณกรอกคือ</p>
+              <b style="font-size:18px;color:red;">${text}</b>
+              <p>กรุณาลองใหม่</p>`
+        });
+    }
+    await addDoc(collection(db, "logs"), {
+    number: selectedNum,
+    input: text,
+    result: snap.exists() && text === snap.data().pass ? "correct" : "wrong",
+    time: serverTimestamp()
+    });
     }, 1700);
+
 
 });
