@@ -34,6 +34,9 @@ for (let i=1;i<=30;i++) {
 console.log(29689);
 let bt=document.getElementById("btsubmit");
 
+let count = 30;
+
+
 
 const form = document.querySelector("form");
 
