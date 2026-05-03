@@ -64,6 +64,11 @@ body {
     gap: 1rem;
 }
 
+#dlBtn {
+    padding-left: 250px;
+    color: white;
+}
+
 /* select */
 #seenum {
     width: 100%;
